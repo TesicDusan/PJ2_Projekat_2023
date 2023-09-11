@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="441.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pj2.pj2_projekat_2023.kontroleri.VoziloInfo">
+   <children>
+      <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="150.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="18.0" layoutY="164.0" text="ID Vozila:" />
+      <Label layoutX="18.0" layoutY="185.0" text="Obradjeno:" />
+      <Label layoutX="18.0" layoutY="206.0" text="Preslo granicu:" />
+      <Label fx:id="deklMasaLabel" layoutX="18.0" layoutY="227.0" text="Deklarisana Masa:" visible="false" />
+      <Label fx:id="stvarnaMasaLabel" layoutX="18.0" layoutY="248.0" text="Stvarna masa:" visible="false" />
+      <Label fx:id="dokumentacijaLabel" layoutX="18.0" layoutY="269.0" text="Potrebna Dokumentacija:" visible="false" />
+      <Text fx:id="idVozila" layoutX="85.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+      <Text fx:id="obradjeno" layoutX="97.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+      <Text fx:id="preslo" layoutX="120.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+      <Text fx:id="deklMasa" layoutX="137.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+      <Text fx:id="stvarnaMasa" layoutX="111.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+      <Text fx:id="dokumentacija" layoutX="185.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" visible="false" />
+      <TableView fx:id="tabelaInfo" layoutX="275.0" layoutY="14.0" prefHeight="200.0" prefWidth="444.0">
+        <columns>
+          <TableColumn fx:id="idPutnika" editable="false" prefWidth="100.0" text="ID Putnika" />
+            <TableColumn fx:id="prtljag" editable="false" prefWidth="100.0" text="Prtljag" visible="false" />
+            <TableColumn fx:id="isprave" editable="false" prefWidth="149.0" text="Isprave" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tabelaIncident" layoutX="275.0" layoutY="227.0" prefHeight="200.0" prefWidth="444.0">
+        <columns>
+          <TableColumn fx:id="putnik" editable="false" prefWidth="75.0" text="Putnik" />
+          <TableColumn fx:id="incident" editable="false" prefWidth="368.0" text="Incident" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

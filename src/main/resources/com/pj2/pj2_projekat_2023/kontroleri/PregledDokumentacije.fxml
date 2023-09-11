@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="513.0" prefWidth="536.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pj2.pj2_projekat_2023.kontroleri.PregledDokumentacije">
+   <children>
+      <TextArea fx:id="textArea" editable="false" layoutX="21.0" layoutY="66.0" prefHeight="433.0" prefWidth="494.0" />
+      <Label layoutX="94.0" layoutY="14.0" text="Pregled policijske dokumentacije">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
