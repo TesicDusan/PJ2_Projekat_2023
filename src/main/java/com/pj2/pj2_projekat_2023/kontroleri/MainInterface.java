@@ -121,7 +121,7 @@ public class MainInterface implements Initializable {
         timerTimeline.setCycleCount(Timeline.INDEFINITE);
 
         //Kreiranje Timeline-a za azuriranje grafickog interfejsa
-        Timeline gridTimeline = new Timeline(new KeyFrame(Duration.millis(BASE_INTERVAL), event -> { postaviSlike(gridPane, matrica); }));
+        Timeline gridTimeline = new Timeline(new KeyFrame(Duration.millis(BASE_INTERVAL), event -> postaviSlike(gridPane, matrica)));
         gridTimeline.setCycleCount(Timeline.INDEFINITE);
         gridTimeline.play();
 
@@ -283,6 +283,7 @@ public class MainInterface implements Initializable {
     public void appendTextArea(String string) { textArea.appendText(string); }
 
     public boolean getZaustavljeno() { return zaustavljeno; }
+    public Timeline getTimerTimeline() { return timerTimeline; }
     public Object getFromMatrica(int row, int column) { return matrica[row][column]; }
     public ArrayList<Terminal> getTerminali() { return terminali; }
     public ArrayList<Vozilo> getVozila() { return vozila; }

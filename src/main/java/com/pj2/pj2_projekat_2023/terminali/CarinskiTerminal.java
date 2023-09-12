@@ -56,6 +56,8 @@ public class CarinskiTerminal extends Terminal {
             vozilo.setTerminal(null);
             for(Incident incident : vozilo.getIncidenti())
                 if(incident.getTerminal() instanceof CarinskiTerminal)CarinskaDokumentacija.upisiUFajl(incident);
+            if(mainInterface.getVozila().indexOf(vozilo) == mainInterface.getVozila().size()-1)
+                mainInterface.getTimerTimeline().stop();
             setVozilo(null);
             setSlobodan(true);
         }

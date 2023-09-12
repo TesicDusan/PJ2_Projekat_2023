@@ -6,7 +6,6 @@ import com.pj2.pj2_projekat_2023.vozila.Autobus;
 import com.pj2.pj2_projekat_2023.vozila.Incident;
 import com.pj2.pj2_projekat_2023.vozila.Putnik;
 import com.pj2.pj2_projekat_2023.dokumentacija.PolicijskaDokumentacija;
-
 import javafx.scene.image.Image;
 
 import java.net.URL;
@@ -50,6 +49,8 @@ public class PolicijskiTerminal extends Terminal {
                 if(incident.getTerminal() instanceof PolicijskiTerminal)PolicijskaDokumentacija.generisiDokumentaciju(incident);
             if(vozilo.isSuspendovano()) {
                 vozilo.setObradjen(true);
+                if(mainInterface.getVozila().indexOf(vozilo) == mainInterface.getVozila().size()-1)
+                    mainInterface.getTimerTimeline().stop();
                 this.setVozilo(null);
                 this.setSlobodan(true);
             }
