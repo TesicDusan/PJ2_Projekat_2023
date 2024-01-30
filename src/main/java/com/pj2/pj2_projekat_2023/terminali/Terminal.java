@@ -22,6 +22,7 @@ public abstract class Terminal extends Thread {
     protected Image slika;
     protected int posX, posY;
     protected Vozilo vozilo = null;
+    protected static Object LOCK = Vozilo.getLock();
 
     public Terminal(boolean aktivan, int x, int y, MainInterface mainInterface) {
 
@@ -36,24 +37,24 @@ public abstract class Terminal extends Thread {
     public void run() {
         while(true) {
             while (mainInterface.getZaustavljeno()) {
-                synchronized (Vozilo.getLock()) {
+                synchronized (LOCK) {
                     try {
-                        Vozilo.getLock().wait();
+                        LOCK.wait();
                     } catch (InterruptedException e) {
                         Main.LOGGER.log(Level.WARNING, e.fillInStackTrace().toString(), e);
                     }
-                    Vozilo.getLock().notifyAll();
+                    LOCK.notifyAll();
                 }
             }
-            synchronized (Vozilo.getLock()) {
-                aktivan = provjeriAktivnost();
-                if(this.vozilo != null) obradiVozilo();
-                else try {
-                    Vozilo.getLock().wait(250);
-                } catch (InterruptedException e) {
-                    Main.LOGGER.log(Level.WARNING, e.fillInStackTrace().toString(), e);
-                }
-                Vozilo.getLock().notifyAll();
+            synchronized (LOCK) {
+                    aktivan = provjeriAktivnost();
+                    if (this.vozilo != null) obradiVozilo();
+                    else try {
+                        LOCK.wait(250);
+                    } catch (InterruptedException e) {
+                        Main.LOGGER.log(Level.WARNING, e.fillInStackTrace().toString(), e);
+                    }
+                    LOCK.notifyAll();
             }
         }
     }

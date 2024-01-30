@@ -63,7 +63,7 @@ public abstract class Vozilo extends Thread {
             }
 
             synchronized (LOCK) {
-                if(posX == 1 && posY > 2 && mainInterface.getFromMatrica(posY - 1, posX) == null) {
+                if(posX == 1 && posY > 2 && posY <= 6 && mainInterface.getFromMatrica(posY - 1, posX) == null) {
                     if(posY == 6 && Kolona.getKolona().size() > 0) {
                         Vozilo vozilo = Kolona.pop();
                         mainInterface.setMatrica(vozilo, posY--, posX);
@@ -75,25 +75,25 @@ public abstract class Vozilo extends Thread {
                     goToSleep();
                     LOCK.notifyAll();
                 }
-                else if(posX == 1 && posY == 2) {
-                    predjiNaTerminalP();
-                    goToSleep();
-                    LOCK.notifyAll();
-                }
-                else if(posY == 1 && policijskiProvjereno && !suspendovano) {
-                    if (terminal != null) {
-                        terminal.setVozilo(null);
-                        terminal.setSlobodan(true);
-                        terminal = null;
-                        predjiNaTerminalC();
+                else if (mainInterface.getFromMatrica(5, 1) != null) {
+                    if (posX == 1 && posY == 2) {
+                        predjiNaTerminalP();
                         goToSleep();
                         LOCK.notifyAll();
+                    } else if (posY == 1 && policijskiProvjereno && !suspendovano) {
+                        if (terminal != null) {
+                            terminal.setVozilo(null);
+                            terminal.setSlobodan(true);
+                            terminal = null;
+                            predjiNaTerminalC();
+                            goToSleep();
+                            LOCK.notifyAll();
+                        }
+                    } else try {
+                        LOCK.wait(250);
+                    } catch (InterruptedException e) {
+                        Main.LOGGER.log(Level.WARNING, e.fillInStackTrace().toString(), e);
                     }
-                }
-                else try {
-                    LOCK.wait(250);
-                } catch (InterruptedException e) {
-                    Main.LOGGER.log(Level.WARNING, e.fillInStackTrace().toString(), e);
                 }
                 LOCK.notifyAll();
             }
@@ -167,7 +167,7 @@ public abstract class Vozilo extends Thread {
 
     public void goToSleep() {
         try {
-            Thread.sleep(250);
+            LOCK.wait(250);
         } catch (InterruptedException e) {
             Main.LOGGER.log(Level.WARNING, e.fillInStackTrace().toString(), e);
         }

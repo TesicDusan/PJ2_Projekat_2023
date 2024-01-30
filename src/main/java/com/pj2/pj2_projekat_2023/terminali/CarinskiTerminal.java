@@ -25,7 +25,7 @@ public class CarinskiTerminal extends Terminal {
             mainInterface.appendTextArea("Počinje carinska kontrola vozila " + vozilo.getIdVozila() + "\n");
             if (vozilo instanceof Autobus autobus) {
                 List<Putnik> putnici = autobus.filterPutnici();
-                for (int i = putnici.size()-1; i >= 0; i--) {
+                for (int i = 0; i < putnici.size(); i++) {
                     Putnik putnik = putnici.get(i);
                     if (putnik.getNedozvoljenPrtljag()) {
                         mainInterface.appendTextArea("Putnik " + putnik.getIdBroj() + " je suspendovan na carini zbog nedozvoljenog prtljaga.\n");
